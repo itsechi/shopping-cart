@@ -3,7 +3,7 @@ import styles from "./Catalog.module.scss";
 
 function createPage(productsArr, name) {
   const cards = productsArr.map((item) => (
-    <Card name={item.name} price={item.price} img={item.image} id={item.id} />
+    <Card key={item.id} name={item.name} price={item.price} img={item.image} id={item.id} />
   ));
 
   return (
