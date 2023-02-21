@@ -14,13 +14,13 @@ function Header() {
           </div>
           <div className={styles.navLinks}>
             <li>
-              <span class="material-icons-outlined">search</span>
+              <span className="material-icons-outlined">search</span>
             </li>
             <li>
-              <span class="material-icons-outlined">favorite_border</span>
+              <span className="material-icons-outlined">favorite_border</span>
             </li>
             <li>
-              <span class="material-icons-outlined">shopping_bag</span>
+              <span className="material-icons-outlined">shopping_bag</span>
             </li>
           </div>
         </ul>

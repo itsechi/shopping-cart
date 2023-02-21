@@ -1,0 +1,15 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.pageTitle {
+  padding: 0 1.5rem;
+  margin-top: 5rem;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.175em;
+  text-transform: uppercase;
+}

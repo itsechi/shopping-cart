@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.title {
+  text-decoration: none;
+  color: black;
+}
