@@ -19,7 +19,6 @@ function Header() {
             <Link to="./bedroom">
               <li>Bedroom</li>
             </Link>
-            <li>Kitchen</li>
           </div>
           <div className={styles.navLinks}>
             <li>
