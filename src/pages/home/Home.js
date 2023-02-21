@@ -1,11 +1,14 @@
-import styles from './Home.module.scss';
+import styles from "./Home.module.scss";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>FURNITURE</h1>
       <h3 className={styles.text}>The long weekend sale</h3>
-      <button className={styles.btn}>Shop now</button>
+      <Link to="./living">
+        <button className={styles.btn}>Shop now</button>
+      </Link>
     </main>
   );
 }
