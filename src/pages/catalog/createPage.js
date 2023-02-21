@@ -1,5 +1,5 @@
-import Card from "../components/card/Card";
-import styles from "./Page.module.scss";
+import Card from "../../components/card/Card";
+import styles from "./Catalog.module.scss";
 
 function createPage(productsArr, name) {
   const cards = productsArr.map((item) => (

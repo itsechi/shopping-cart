@@ -16,7 +16,9 @@ function Header() {
             <Link to="./dining">
               <li>Dining</li>
             </Link>
-            <li>Bedroom</li>
+            <Link to="./bedroom">
+              <li>Bedroom</li>
+            </Link>
             <li>Kitchen</li>
           </div>
           <div className={styles.navLinks}>
