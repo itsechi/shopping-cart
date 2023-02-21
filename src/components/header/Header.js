@@ -1,13 +1,18 @@
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>FURNITURE</h1>
+      <Link to="./">
+        <h1 className={styles.title}>FURNITURE</h1>
+      </Link>
       <nav className={styles.nav}>
         <ul className={styles.navUl}>
           <div className={styles.navLinks}>
-            <li>Living</li>
+            <Link to="./living">
+              <li>Living</li>
+            </Link>
             <li>Dining</li>
             <li>Bedroom</li>
             <li>Kitchen</li>
