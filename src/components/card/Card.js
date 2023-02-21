@@ -1,15 +1,16 @@
 import styles from "./Card.module.scss";
+import { Link } from "react-router-dom";
 
 function Card(props) {
   return (
     <article className={styles.card}>
-      <a href=".">
+      <Link to={`./${props.id}`}>
         <img src={props.img} className={styles.img} alt="#"></img>
-      </a>
+      </Link>
       <div className={styles.details}>
-        <a href="." className={styles.title}>
+        <Link to={`./${props.id}`} className={styles.title}>
           <span>{props.name}</span>
-        </a>
+        </Link>
         <p>{props.price}</p>
       </div>
     </article>

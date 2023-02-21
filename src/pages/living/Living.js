@@ -4,7 +4,7 @@ import styles from "../Pages.module.scss";
 
 function Living() {
   const cards = livingProducts.map((item) => (
-    <Card name={item.name} price={item.price} img={item.image} />
+    <Card name={item.name} price={item.price} img={item.image} id={item.id}/>
   ));
 
   return (
