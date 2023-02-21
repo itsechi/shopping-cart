@@ -8,7 +8,9 @@ function createPage(productsArr, name) {
 
   return (
     <main>
-      <h2 className={styles.pageTitle}>{name} room furniture</h2>
+      <h2 className={styles.pageTitle}>
+        {name === "bedroom" ? name : name + " room"} furniture
+      </h2>
       <section className={styles.cards}>{cards}</section>
     </main>
   );
