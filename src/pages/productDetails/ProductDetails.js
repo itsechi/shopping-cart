@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import livingProducts from "../../data/livingProducts";
+import allProducts from "../../data/allProducts";
 import styles from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const routeParams = useParams();
-  const item = livingProducts.find((item) => item.id === routeParams.id);
+  const item = allProducts.find((item) => item.id === routeParams.id);
 
   return (
     <main className={styles.page}>
@@ -21,7 +21,11 @@ function ProductDetails() {
 
         <div className={styles.quantity}>
           <button className={styles.quantityBtn}>-</button>
-          <input type="number" className={styles.quantityInput} value="1"></input>
+          <input
+            type="number"
+            className={styles.quantityInput}
+            value="1"
+          ></input>
           <button className={styles.quantityBtn}>+</button>
         </div>
         <button className={styles.btn}>Add to cart</button>

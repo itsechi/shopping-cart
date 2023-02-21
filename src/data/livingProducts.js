@@ -1,8 +1,4 @@
-function importImages(r) {
-  let images = {};
-  r.keys().map((item) => (images[item.replace("./", "")] = r(item)));
-  return images;
-}
+import importImages from "../utils/importImages";
 
 const images = importImages(
   require.context("../assets/living", false, /\.(png|jpe?g|svg)$/)

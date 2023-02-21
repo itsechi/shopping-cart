@@ -13,7 +13,9 @@ function Header() {
             <Link to="./living">
               <li>Living</li>
             </Link>
-            <li>Dining</li>
+            <Link to="./dining">
+              <li>Dining</li>
+            </Link>
             <li>Bedroom</li>
             <li>Kitchen</li>
           </div>
