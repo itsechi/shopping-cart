@@ -77,3 +77,81 @@ input::-webkit-inner-spin-button {
     background-color: black;
   }
 }
+
+.detailsHidden {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 1.5rem;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 1px;
+    top: -0.5rem;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 1px;
+    bottom: -0.5rem;
+  }
+}
+
+.detailsExpanded {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 1.5rem;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 1px;
+    top: -0.5rem;
+  }
+}
+
+.details {
+  margin-top: 1rem;
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+  animation: scaleUp 0.1s;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 1px;
+    bottom: -0.5rem;
+    left: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
