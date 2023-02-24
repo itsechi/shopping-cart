@@ -7,7 +7,6 @@ function ProductDetails() {
   const routeParams = useParams();
   const item = allProducts.find((item) => item.id === routeParams.id);
   const [expand, setExpand] = React.useState(false);
-  console.log(expand);
 
   return (
     <main className={styles.page}>
@@ -32,16 +31,18 @@ function ProductDetails() {
           <button className={styles.quantityBtn}>+</button>
         </div>
         <button className={styles.btn}>Add to cart</button>
-        <p
-          className={expand ? styles.detailsExpanded : styles.detailsHidden}
-          onClick={() => setExpand(!expand)}
-        >
+        <p className={styles.detailsTitle} onClick={() => setExpand(!expand)}>
           Details{" "}
           <span className="material-icons-outlined">
             {expand ? "expand_less" : "expand_more"}
           </span>
         </p>
-        <p className={expand ? styles.details : styles.hidden}>
+        <p
+          className={[
+            styles.detailsText,
+            expand ? styles.detailsShown : styles.detailsHidden,
+          ].join(" ")}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
           mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
           mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
