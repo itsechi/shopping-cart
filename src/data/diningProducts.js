@@ -1,28 +1,26 @@
-import importImages from "../utils/importImages";
-
-const images = importImages(
-  require.context("../assets/dining", false, /\.(png|jpe?g|svg)$/)
-);
+import materia from "../assets/dining/materia.jpg";
+import ondeo from "../assets/dining/ondeo.jpg";
+import steedy from "../assets/dining/steedy.jpg";
 
 const diningProducts = [
   {
     id: "materia",
     name: "MATERIA series",
-    image: images["materia.jpg"],
+    image: materia,
     price: "$2,599.00",
     category: "dining",
   },
   {
     id: "ondeo",
     name: "ONDEO series",
-    image: images["ondeo.jpg"],
+    image: ondeo,
     price: "$5,999.00",
     category: "dining",
   },
   {
     id: "steedy",
     name: "STEEDY series",
-    image: images["steedy.jpg"],
+    image: steedy,
     price: "$4,599.00",
     category: "dining",
   },

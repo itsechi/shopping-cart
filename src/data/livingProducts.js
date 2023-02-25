@@ -1,49 +1,50 @@
-import importImages from "../utils/importImages";
-
-const images = importImages(
-  require.context("../assets/living", false, /\.(png|jpe?g|svg)$/)
-);
+import aulani from "../assets/living/aulani.jpg";
+import avante from "../assets/living/avante.jpg";
+import driftwood from "../assets/living/driftwood.jpg";
+import fashio from "../assets/living/fashio.jpg";
+import lintel from "../assets/living/lintel.jpg";
+import viva from "../assets/living/viva.jpg";
 
 const livingProducts = [
   {
     id: "aulani",
     name: "AULANI series",
-    image: images["aulani.jpg"],
+    image: aulani,
     price: "$2,599.00",
     category: "living",
   },
   {
     id: "avante",
     name: "AVANTE series",
-    image: images["avante.jpg"],
+    image: avante,
     price: "$7,499.00",
     category: "living",
   },
   {
     id: "driftwood",
     name: "DRIFTWOOD series",
-    image: images["driftwood.jpg"],
+    image: driftwood,
     price: "$1,299.00",
     category: "living",
   },
   {
     id: "fashio",
     name: "FASHIO series",
-    image: images["fashio.jpg"],
+    image: fashio,
     price: "$4,599.00",
     category: "living",
   },
   {
     id: "lintel",
     name: "LINTEL series",
-    image: images["lintel.jpg"],
+    image: lintel,
     price: "$2,999.00",
     category: "living",
   },
   {
     id: "viva",
     name: "VIVA series",
-    image: images["viva.jpg"],
+    image: viva,
     price: "$3,999.00",
     category: "living",
   },

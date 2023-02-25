@@ -13,7 +13,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <Link to="./">
-        <h1 className={styles.title}>FURNITURE</h1>
+        <p className={styles.title}>FURNITURE</p>
       </Link>
       <nav className={styles.nav}>
         <ul className={styles.navUl}>
