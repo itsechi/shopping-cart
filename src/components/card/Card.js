@@ -8,7 +8,7 @@ function Card(props) {
   return (
     <article className={styles.card}>
       <Link to={`./${props.id}`}>
-        <div class={styles.imageContainer}>
+        <div className={styles.imageContainer}>
           <img
             src={props.img}
             className={loaded ? styles.img : styles.hidden}

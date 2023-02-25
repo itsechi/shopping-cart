@@ -19,4 +19,13 @@ describe("App component", () => {
     expect(heading).toBeInTheDocument();
     expect(heading.textContent).toMatch(/Living room furniture/i);
   });
+
+  it("Renders cart component after user click", async () => {
+    render(<App />);
+    const button = screen.getByLabelText("shopping cart");
+    userEvent.click(button);
+    const heading = await screen.findByRole("heading", { level: 3 });
+    expect(heading).toBeInTheDocument();
+    expect(heading.textContent).toMatch(/Cart/i);
+  });
 });

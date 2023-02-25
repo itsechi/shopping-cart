@@ -39,6 +39,7 @@ function Header() {
               <span
                 className="material-icons-outlined"
                 onClick={toggleModal}
+                aria-label="shopping cart"
               >
                 shopping_bag
               </span>
