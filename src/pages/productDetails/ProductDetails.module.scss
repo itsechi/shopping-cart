@@ -1,3 +1,5 @@
+@import '../../variables';
+
 button {
   cursor: pointer;
   border: none;
@@ -29,7 +31,7 @@ input::-webkit-inner-spin-button {
 }
 
 .productDescription {
-  color: rgba(0, 0, 0, 0.7);
+  color: $medium-gray;
   margin-bottom: 1rem;
 }
 
@@ -57,14 +59,14 @@ input::-webkit-inner-spin-button {
   width: 37px;
   height: 37px;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid $black;
   text-align: center;
   font-family: inherit;
   font-size: 16px;
 }
 
 .btn {
-  background: #222222;
+  background: $dark-gray;
   color: white;
   font-weight: 700;
   font-size: 16px;
@@ -74,7 +76,7 @@ input::-webkit-inner-spin-button {
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: black;
+    background-color: $black;
   }
 }
 
@@ -91,7 +93,7 @@ input::-webkit-inner-spin-button {
     content: '';
     position: absolute;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $light-gray;
     height: 1px;
     top: -0.5rem;
   }
@@ -100,7 +102,7 @@ input::-webkit-inner-spin-button {
 .detailsText {
   margin-top: 0.5rem;
   position: relative;
-  color: rgba(0, 0, 0, 0.7);
+  color: $medium-gray;
   overflow: hidden;
   transition: all 0.5s ease-out;
 
@@ -108,7 +110,7 @@ input::-webkit-inner-spin-button {
     content: '';
     position: absolute;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $light-gray;
     height: 1px;
     bottom: 0;
     left: 0;

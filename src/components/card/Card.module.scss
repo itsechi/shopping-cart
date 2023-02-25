@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .card {
   display: flex;
   flex-direction: column;
@@ -18,11 +20,11 @@
 
 .title {
   text-decoration: none;
-  color: black;
+  color: $black;
   transition: all 0.3s;
 
   &:hover {
-    color: rgba(0, 0, 0, 0.7);
+    color: $medium-gray;
   }
 }
 

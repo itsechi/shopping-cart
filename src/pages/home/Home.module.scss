@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .title {
   font-family: 'Roboto Slab', serif;
 }
@@ -6,10 +8,10 @@
   width: 100%;
   min-height: calc(100vh - 75px);
   background: url('../../assets/bg.jpg');
-  color: white;
+  color: $white;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -35,8 +37,7 @@
   transition: all 0.3s;
 
   &:hover {
-    background-color: #0A0907;
-    color: white;
+    background-color: $black;
+    color: $white;
   }
 }
-

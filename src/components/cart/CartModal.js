@@ -11,6 +11,10 @@ function CartModal(props) {
             close
           </span>
         </div>
+        <div className={styles.buttons}>
+          <button className={styles.btnSecondary}>Continue shopping</button>
+          <button className={styles.btnPrimary}>Checkout now</button>
+        </div>
       </section>
     </>
   );
