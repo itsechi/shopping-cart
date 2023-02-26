@@ -28,4 +28,17 @@ describe("App component", () => {
     expect(heading).toBeInTheDocument();
     expect(heading.textContent).toMatch(/Cart/i);
   });
+
+  it("Renders a correct product after user click", async () => {
+    render(<App />);
+    const button = screen.getByRole("link", { name: "Living" });
+    userEvent.click(button);
+    const productCard = await screen.findByRole("link", {
+      name: "AULANI series",
+    });
+    userEvent.click(productCard);
+    const productTitle = await screen.findByRole("heading", { level: 1 });
+    expect(productTitle).toBeInTheDocument();
+    expect(productTitle.textContent).toMatch("AULANI series");
+  });
 });
