@@ -6,15 +6,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 
 function App() {
-  const [cart, setCart] = React.useState({});
+  const [cart, setCart] = React.useState([]);
 
-  function addToCart(id, quantity) {
-    setCart((prevState) => {
-      return {
-        ...prevState,
-        [id]: quantity,
-      };
-    });
+  function addToCart(item, quantity) {
+    const product = cart.find((product) => product.item.id === item.id);
+    const newCart = cart;
+    if (product)
+      newCart.map((item) => {
+        if (item === product) return (item.quantity = quantity);
+        else return item;
+      });
+    else
+      newCart.push({
+        item,
+        quantity,
+      });
+    setCart(newCart);
   }
 
   return (

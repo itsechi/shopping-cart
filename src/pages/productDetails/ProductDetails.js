@@ -57,7 +57,7 @@ function ProductDetails(props) {
         </div>
         <button
           className={styles.btn}
-          onClick={() => props.addToCart(item.id, quantity)}
+          onClick={() => props.addToCart(item, quantity)}
         >
           Add to cart
         </button>
