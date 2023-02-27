@@ -3,10 +3,29 @@ import allProducts from "../../data/allProducts";
 import styles from "./ProductDetails.module.scss";
 import React from "react";
 
-function ProductDetails() {
+function ProductDetails(props) {
   const routeParams = useParams();
   const item = allProducts.find((item) => item.id === routeParams.id);
   const [expand, setExpand] = React.useState(false);
+  const [quantity, setQuantity] = React.useState(1);
+
+  function increaseQuantity() {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  }
+
+  function decreaseQuantity() {
+    setQuantity((prevQuantity) => {
+      if (prevQuantity <= 1) return 1;
+      else return prevQuantity - 1;
+    });
+  }
+
+  function handleQuantityChange(e) {
+    setQuantity(() => {
+      if (+e.target.value <= 1) return 1;
+      else return +e.target.value;
+    });
+  }
 
   return (
     <main className={styles.page}>
@@ -22,15 +41,26 @@ function ProductDetails() {
         <p className={styles.productPrice}>{item.price}</p>
 
         <div className={styles.quantity}>
-          <button className={styles.quantityBtn}>-</button>
+          <button className={styles.quantityBtn} onClick={decreaseQuantity}>
+            -
+          </button>
           <input
             type="number"
             className={styles.quantityInput}
-            value="1"
+            value={quantity}
+            onChange={handleQuantityChange}
+            min={1}
           ></input>
-          <button className={styles.quantityBtn}>+</button>
+          <button className={styles.quantityBtn} onClick={increaseQuantity}>
+            +
+          </button>
         </div>
-        <button className={styles.btn}>Add to cart</button>
+        <button
+          className={styles.btn}
+          onClick={() => props.addToCart(item.id, quantity)}
+        >
+          Add to cart
+        </button>
         <p className={styles.detailsTitle} onClick={() => setExpand(!expand)}>
           Details{" "}
           <span className="material-icons-outlined">

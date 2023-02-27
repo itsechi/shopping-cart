@@ -18,7 +18,7 @@ describe("Card component", () => {
         <Card
           name={product.name}
           price={product.price}
-          img={product.image}
+          img={product.img}
           id={product.id}
         />
       </Router>
