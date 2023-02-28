@@ -55,7 +55,7 @@ function ProductDetails(props) {
             className={styles.quantityInput}
             value={quantity}
             onChange={handleQuantityChange}
-            min={1}
+            min="1"
           ></input>
           <button className={styles.quantityBtn} onClick={increaseQuantity}>
             +
@@ -88,7 +88,7 @@ function ProductDetails(props) {
           tellus.
         </p>
       </div>
-      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} />}
+      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} addToCart={props.addToCart} removeFromCart={props.removeFromCart} />}
     </main>
   );
 }

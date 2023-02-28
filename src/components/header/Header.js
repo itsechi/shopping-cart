@@ -47,7 +47,7 @@ function Header(props) {
           </div>
         </ul>
       </nav>
-      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} />}
+      {showCart && <CartModal cart={props.cart} addToCart={props.addToCart} toggleModal={toggleModal} />}
     </header>
   );
 }

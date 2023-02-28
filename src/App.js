@@ -10,7 +10,7 @@ function App() {
 
   function addToCart(item, quantity) {
     const product = cart.find((product) => product.item.id === item.id);
-    const newCart = cart;
+    const newCart = [...cart];
     if (product)
       newCart.map((item) => {
         if (item === product) return (item.quantity = quantity);
@@ -24,16 +24,23 @@ function App() {
     setCart(newCart);
   }
 
+  function removeFromCart(item) {
+    const product = cart.findIndex((product) => product.item.id === item.id);
+    const newCart = [...cart];
+    newCart.splice(product, 1);
+    setCart(newCart);
+  }
+
   return (
     <>
       <Router>
-        <Header cart={cart} />
+        <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Catalog />} />
           <Route
             path="/:id/:id"
-            element={<ProductDetails cart={cart} addToCart={addToCart} />}
+            element={<ProductDetails removeFromCart={removeFromCart} cart={cart} addToCart={addToCart} />}
           />
         </Routes>
       </Router>
