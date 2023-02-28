@@ -5,7 +5,6 @@ import React from "react";
 import CartModal from "../../components/cart/CartModal";
 
 function ProductDetails(props) {
-  console.log(props);
   const routeParams = useParams();
   const item = allProducts.find((item) => item.id === routeParams.id);
   const [expand, setExpand] = React.useState(false);
