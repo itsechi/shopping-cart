@@ -14,5 +14,6 @@ describe("Cart functions", () => {
     jest.spyOn(Router, "useParams").mockReturnValue({ id: "blaise" });
     render(<ProductDetails />);
     const btn = screen.getByRole("button", { name: /add to cart/i });
+    console.log(btn);
   });
 });

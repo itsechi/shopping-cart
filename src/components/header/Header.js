@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import CartModal from "../cart/CartModal";
 
-function Header() {
+function Header(props) {
   const [showCart, setShowCart] = React.useState(false);
 
   function toggleModal() {
@@ -47,7 +47,7 @@ function Header() {
           </div>
         </ul>
       </nav>
-      {showCart && <CartModal toggleModal={toggleModal} />}
+      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} />}
     </header>
   );
 }

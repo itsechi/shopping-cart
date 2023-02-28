@@ -88,7 +88,7 @@ function ProductDetails(props) {
           tellus.
         </p>
       </div>
-      {showCart && <CartModal toggleModal={toggleModal} />}
+      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} />}
     </main>
   );
 }

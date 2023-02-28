@@ -27,13 +27,13 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        <Header cart={cart} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Catalog />} />
           <Route
             path="/:id/:id"
-            element={<ProductDetails addToCart={addToCart} />}
+            element={<ProductDetails cart={cart} addToCart={addToCart} />}
           />
         </Routes>
       </Router>
