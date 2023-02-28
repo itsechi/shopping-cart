@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import allProducts from "../../data/allProducts";
 import styles from "./ProductDetails.module.scss";
 import React from "react";
+import CartModal from "../../components/cart/CartModal";
 
 function ProductDetails(props) {
   const routeParams = useParams();
   const item = allProducts.find((item) => item.id === routeParams.id);
   const [expand, setExpand] = React.useState(false);
   const [quantity, setQuantity] = React.useState(1);
+  const [showCart, setShowCart] = React.useState(false);
 
   function increaseQuantity() {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -25,6 +27,10 @@ function ProductDetails(props) {
       if (+e.target.value <= 1) return 1;
       else return +e.target.value;
     });
+  }
+
+  function toggleModal() {
+    setShowCart(!showCart);
   }
 
   return (
@@ -57,7 +63,10 @@ function ProductDetails(props) {
         </div>
         <button
           className={styles.btn}
-          onClick={() => props.addToCart(item, quantity)}
+          onClick={() => {
+            props.addToCart(item, quantity);
+            toggleModal();
+          }}
         >
           Add to cart
         </button>
@@ -79,6 +88,7 @@ function ProductDetails(props) {
           tellus.
         </p>
       </div>
+      {showCart && <CartModal toggleModal={toggleModal} />}
     </main>
   );
 }

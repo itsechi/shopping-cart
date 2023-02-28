@@ -12,7 +12,7 @@ function CartModal(props) {
           </span>
         </div>
         <div className={styles.buttons}>
-          <button className={styles.btnSecondary}>Continue shopping</button>
+          <button className={styles.btnSecondary} onClick={props.toggleModal}>Continue shopping</button>
           <button className={styles.btnPrimary}>Checkout now</button>
         </div>
       </section>
