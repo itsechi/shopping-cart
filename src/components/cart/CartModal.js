@@ -21,6 +21,12 @@ function CartModal(props) {
     props.addToCart(product.item, +e.target.value);
   }
 
+  function removeItem(e) {
+    const id = e.target.closest('article').dataset.id;
+    const product = props.cart.find((obj) => obj.item.id === id);
+    props.removeFromCart(product);
+  }
+
   const cartItems = props.cart.map((obj) => (
     <article className={styles.product} key={obj.item.id} data-id={obj.item.id}>
       <img src={obj.item.image} alt="" className={styles.productImg}></img>
@@ -30,7 +36,7 @@ function CartModal(props) {
           <p className={styles.productDescription}>
             Category: {obj.item.category}
           </p>
-          <span className="material-icons-outlined">close</span>
+          <span className="material-icons-outlined" onClick={removeItem}>close</span>
         </div>
 
         <div className={styles.productInfoBottom}>
