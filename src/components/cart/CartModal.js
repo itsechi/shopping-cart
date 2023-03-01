@@ -42,7 +42,7 @@ function CartModal(props) {
 
   return (
     <>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} onClick={props.toggleModal}></div>
       <section className={styles.cartModal}>
         <div className={styles.title}>
           <h3>Cart</h3>
