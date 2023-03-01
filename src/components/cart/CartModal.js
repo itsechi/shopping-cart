@@ -24,7 +24,7 @@ function CartModal(props) {
   function removeItem(e) {
     const id = e.target.closest('article').dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
-    props.removeFromCart(product);
+    props.removeFromCart(product.item);
   }
 
   const cartItems = props.cart.map((obj) => (
