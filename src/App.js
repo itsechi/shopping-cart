@@ -7,6 +7,11 @@ import React from "react";
 
 const App = () => {
   const [cart, setCart] = React.useState([]);
+  const [showCart, setShowCart] = React.useState(false);
+
+  const toggleModal = () => {
+    setShowCart(!showCart);
+  };
 
   const addToCart = (item, quantity) => {
     const product = cart.find((product) => product.item.id === item.id);
@@ -38,6 +43,8 @@ const App = () => {
           cart={cart}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          toggleModal={toggleModal}
+          showCart={showCart}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,6 +56,7 @@ const App = () => {
                 removeFromCart={removeFromCart}
                 cart={cart}
                 addToCart={addToCart}
+                toggleModal={toggleModal}
               />
             }
           />

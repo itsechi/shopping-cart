@@ -70,8 +70,11 @@ const CartModal = (props) => {
 
   return (
     <>
-      <div className={styles.overlay} onClick={props.toggleModal}></div>
-      <section className={styles.cartModal}>
+      <div
+        className={props.showCart ? styles.overlay : styles.hidden}
+        onClick={props.toggleModal}
+      ></div>
+      <section className={props.showCart ? styles.cartModal : styles.hidden}>
         <div className={styles.title}>
           <h3>
             Cart{" "}

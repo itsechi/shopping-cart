@@ -4,12 +4,6 @@ import styles from "./Header.module.scss";
 import CartModal from "../cart/CartModal";
 
 const Header = (props) => {
-  const [showCart, setShowCart] = React.useState(false);
-
-  const toggleModal = () => {
-    setShowCart(!showCart);
-  };
-
   return (
     <header className={styles.header}>
       <Link to="./">
@@ -38,7 +32,7 @@ const Header = (props) => {
             <li>
               <span
                 className="material-icons-outlined"
-                onClick={toggleModal}
+                onClick={props.toggleModal}
                 aria-label="shopping cart"
               >
                 shopping_bag
@@ -47,13 +41,13 @@ const Header = (props) => {
           </div>
         </ul>
       </nav>
-      {showCart && (
-        <CartModal
-          cart={props.cart}
-          addToCart={props.addToCart}
-          toggleModal={toggleModal}
-        />
-      )}
+      <CartModal
+        cart={props.cart}
+        addToCart={props.addToCart}
+        toggleModal={props.toggleModal}
+        showCart={props.showCart}
+        removeFromCart={props.removeFromCart}
+      />
     </header>
   );
 };
