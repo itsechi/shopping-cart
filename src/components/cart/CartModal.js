@@ -1,33 +1,36 @@
 import styles from "./CartModal.module.scss";
 import React from "react";
 
-function CartModal(props) {
-  const subtotal = props.cart.reduce((acc, cur) => acc + (cur.item.price * cur.quantity), 0);
+const CartModal = (props) => {
+  const subtotal = props.cart.reduce(
+    (acc, cur) => acc + cur.item.price * cur.quantity,
+    0
+  );
 
-  function decreaseQuantity(e) {
-    const id = e.target.closest('article').dataset.id;
+  const decreaseQuantity = (e) => {
+    const id = e.target.closest("article").dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
     if (product.quantity === 1) props.removeFromCart(product.item);
     else props.addToCart(product.item, product.quantity - 1);
-  }
+  };
 
-  function increaseQuantity(e) {
-    const id = e.target.closest('article').dataset.id;
+  const increaseQuantity = (e) => {
+    const id = e.target.closest("article").dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
     props.addToCart(product.item, product.quantity + 1);
-  }
+  };
 
-  function handleChange(e) {
-    const id = e.target.closest('article').dataset.id;
+  const handleChange = (e) => {
+    const id = e.target.closest("article").dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
     props.addToCart(product.item, +e.target.value);
-  }
+  };
 
-  function removeItem(e) {
-    const id = e.target.closest('article').dataset.id;
+  const removeItem = (e) => {
+    const id = e.target.closest("article").dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
     props.removeFromCart(product.item);
-  }
+  };
 
   const cartItems = props.cart.map((obj) => (
     <article className={styles.product} key={obj.item.id} data-id={obj.item.id}>
@@ -38,12 +41,16 @@ function CartModal(props) {
           <p className={styles.productDescription}>
             Category: {obj.item.category}
           </p>
-          <span className="material-icons-outlined" onClick={removeItem}>close</span>
+          <span className="material-icons-outlined" onClick={removeItem}>
+            close
+          </span>
         </div>
 
         <div className={styles.productInfoBottom}>
           <div>
-            <button className={styles.quantityBtn} onClick={decreaseQuantity}>-</button>
+            <button className={styles.quantityBtn} onClick={decreaseQuantity}>
+              -
+            </button>
             <input
               type="number"
               value={obj.quantity}
@@ -51,7 +58,9 @@ function CartModal(props) {
               className={styles.quantityInput}
               min="0"
             ></input>
-            <button className={styles.quantityBtn} onClick={increaseQuantity}>+</button>
+            <button className={styles.quantityBtn} onClick={increaseQuantity}>
+              +
+            </button>
           </div>
           <p>${(obj.item.price * obj.quantity).toLocaleString("en-US")}</p>
         </div>
@@ -64,14 +73,19 @@ function CartModal(props) {
       <div className={styles.overlay} onClick={props.toggleModal}></div>
       <section className={styles.cartModal}>
         <div className={styles.title}>
-          <h3>Cart <span className={styles.cartLength}>({props.cart.length})</span></h3>
+          <h3>
+            Cart{" "}
+            <span className={styles.cartLength}>({props.cart.length})</span>
+          </h3>
           <span className="material-icons-outlined" onClick={props.toggleModal}>
             close
           </span>
         </div>
         <div className={styles.products}>{cartItems}</div>
         <div className={styles.buttons}>
-          <p className={styles.subtotal}>Subtotal <span>${subtotal.toLocaleString("en-US")}</span></p>
+          <p className={styles.subtotal}>
+            Subtotal <span>${subtotal.toLocaleString("en-US")}</span>
+          </p>
           <button className={styles.btnSecondary} onClick={props.toggleModal}>
             Continue shopping
           </button>
@@ -80,6 +94,6 @@ function CartModal(props) {
       </section>
     </>
   );
-}
+};
 
 export default CartModal;

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import CartModal from "../cart/CartModal";
 
-function Header(props) {
+const Header = (props) => {
   const [showCart, setShowCart] = React.useState(false);
 
-  function toggleModal() {
+  const toggleModal = () => {
     setShowCart(!showCart);
-  }
+  };
 
   return (
     <header className={styles.header}>
@@ -47,9 +47,15 @@ function Header(props) {
           </div>
         </ul>
       </nav>
-      {showCart && <CartModal cart={props.cart} addToCart={props.addToCart} toggleModal={toggleModal} />}
+      {showCart && (
+        <CartModal
+          cart={props.cart}
+          addToCart={props.addToCart}
+          toggleModal={toggleModal}
+        />
+      )}
     </header>
   );
-}
+};
 
 export default Header;

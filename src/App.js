@@ -5,10 +5,10 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 
-function App() {
+const App = () => {
   const [cart, setCart] = React.useState([]);
 
-  function addToCart(item, quantity) {
+  const addToCart = (item, quantity) => {
     const product = cart.find((product) => product.item.id === item.id);
     const newCart = [...cart];
     if (product)
@@ -22,30 +22,40 @@ function App() {
         quantity,
       });
     setCart(newCart);
-  }
+  };
 
-  function removeFromCart(item) {
+  const removeFromCart = (item) => {
     const product = cart.findIndex((product) => product.item.id === item.id);
     const newCart = [...cart];
     newCart.splice(product, 1);
     setCart(newCart);
-  }
+  };
 
   return (
     <>
       <Router>
-        <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+        <Header
+          cart={cart}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Catalog />} />
           <Route
             path="/:id/:id"
-            element={<ProductDetails removeFromCart={removeFromCart} cart={cart} addToCart={addToCart} />}
+            element={
+              <ProductDetails
+                removeFromCart={removeFromCart}
+                cart={cart}
+                addToCart={addToCart}
+              />
+            }
           />
         </Routes>
       </Router>
     </>
   );
-}
+};
 
 export default App;

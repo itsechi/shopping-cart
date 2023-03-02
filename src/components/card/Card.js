@@ -2,7 +2,7 @@ import styles from "./Card.module.scss";
 import { Link } from "react-router-dom";
 import React from "react";
 
-function Card(props) {
+const Card = (props) => {
   const [loaded, setLoaded] = React.useState(false);
 
   return (
@@ -25,6 +25,6 @@ function Card(props) {
       </div>
     </article>
   );
-}
+};
 
 export default Card;

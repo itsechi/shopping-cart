@@ -1,9 +1,15 @@
 import Card from "../../components/card/Card";
 import styles from "./Catalog.module.scss";
 
-function createPage(productsArr, name) {
+const createPage = (productsArr, name) => {
   const cards = productsArr.map((item) => (
-    <Card key={item.id} name={item.name} price={item.price} img={item.image} id={item.id} />
+    <Card
+      key={item.id}
+      name={item.name}
+      price={item.price}
+      img={item.image}
+      id={item.id}
+    />
   ));
 
   return (
@@ -14,6 +20,6 @@ function createPage(productsArr, name) {
       <section className={styles.cards}>{cards}</section>
     </main>
   );
-}
+};
 
 export default createPage;

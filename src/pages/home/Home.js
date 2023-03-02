@@ -1,7 +1,7 @@
 import styles from "./Home.module.scss";
 import { Link } from "react-router-dom";
 
-function Home() {
+const Home = () => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>FURNITURE</h1>
@@ -11,6 +11,6 @@ function Home() {
       </Link>
     </main>
   );
-}
+};
 
 export default Home;

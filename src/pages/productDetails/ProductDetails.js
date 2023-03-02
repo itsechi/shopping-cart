@@ -4,34 +4,34 @@ import styles from "./ProductDetails.module.scss";
 import React from "react";
 import CartModal from "../../components/cart/CartModal";
 
-function ProductDetails(props) {
+const ProductDetails = (props) => {
   const routeParams = useParams();
   const item = allProducts.find((item) => item.id === routeParams.id);
   const [expand, setExpand] = React.useState(false);
   const [quantity, setQuantity] = React.useState(1);
   const [showCart, setShowCart] = React.useState(false);
 
-  function increaseQuantity() {
+  const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
-  }
+  };
 
-  function decreaseQuantity() {
+  const decreaseQuantity = () => {
     setQuantity((prevQuantity) => {
       if (prevQuantity <= 1) return 1;
       else return prevQuantity - 1;
     });
-  }
+  };
 
-  function handleQuantityChange(e) {
+  const handleQuantityChange = (e) => {
     setQuantity(() => {
       if (+e.target.value <= 1) return 1;
       else return +e.target.value;
     });
-  }
+  };
 
-  function toggleModal() {
+  const toggleModal = () => {
     setShowCart(!showCart);
-  }
+  };
 
   return (
     <main className={styles.page}>
@@ -44,7 +44,9 @@ function ProductDetails(props) {
           mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
           tellus.
         </p>
-        <p className={styles.productPrice}>${item.price.toLocaleString("en-US")}</p>
+        <p className={styles.productPrice}>
+          ${item.price.toLocaleString("en-US")}
+        </p>
 
         <div className={styles.quantity}>
           <button className={styles.quantityBtn} onClick={decreaseQuantity}>
@@ -88,9 +90,16 @@ function ProductDetails(props) {
           tellus.
         </p>
       </div>
-      {showCart && <CartModal cart={props.cart} toggleModal={toggleModal} addToCart={props.addToCart} removeFromCart={props.removeFromCart} />}
+      {showCart && (
+        <CartModal
+          cart={props.cart}
+          toggleModal={toggleModal}
+          addToCart={props.addToCart}
+          removeFromCart={props.removeFromCart}
+        />
+      )}
     </main>
   );
-}
+};
 
 export default ProductDetails;
