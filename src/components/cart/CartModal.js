@@ -2,6 +2,8 @@ import styles from "./CartModal.module.scss";
 import React from "react";
 
 function CartModal(props) {
+  const subtotal = props.cart.reduce((acc, cur) => acc + (cur.item.price * cur.quantity), 0);
+
   function decreaseQuantity(e) {
     const id = e.target.closest('article').dataset.id;
     const product = props.cart.find((obj) => obj.item.id === id);
@@ -57,7 +59,6 @@ function CartModal(props) {
     </article>
   ));
 
-
   return (
     <>
       <div className={styles.overlay} onClick={props.toggleModal}></div>
@@ -70,6 +71,7 @@ function CartModal(props) {
         </div>
         <div className={styles.products}>{cartItems}</div>
         <div className={styles.buttons}>
+          <p className={styles.subtotal}>Subtotal <span>${subtotal.toLocaleString("en-US")}</span></p>
           <button className={styles.btnSecondary} onClick={props.toggleModal}>
             Continue shopping
           </button>

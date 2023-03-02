@@ -133,3 +133,13 @@
 .cartLength {
   color: $medium-gray;
 }
+
+.subtotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  & span {
+    
+  }
+}
