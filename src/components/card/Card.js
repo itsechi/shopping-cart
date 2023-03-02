@@ -21,7 +21,7 @@ function Card(props) {
         <Link to={`./${props.id}`} className={styles.title}>
           <span>{props.name}</span>
         </Link>
-        <p>{props.price}</p>
+        <p>${props.price.toLocaleString("en-US")}</p>
       </div>
     </article>
   );

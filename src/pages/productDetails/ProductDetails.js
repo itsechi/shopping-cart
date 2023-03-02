@@ -44,7 +44,7 @@ function ProductDetails(props) {
           mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
           tellus.
         </p>
-        <p className={styles.productPrice}>{item.price}</p>
+        <p className={styles.productPrice}>${item.price.toLocaleString("en-US")}</p>
 
         <div className={styles.quantity}>
           <button className={styles.quantityBtn} onClick={decreaseQuantity}>

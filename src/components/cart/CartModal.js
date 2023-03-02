@@ -51,18 +51,19 @@ function CartModal(props) {
             ></input>
             <button className={styles.quantityBtn} onClick={increaseQuantity}>+</button>
           </div>
-          <p>{obj.item.price}</p>
+          <p>${(obj.item.price * obj.quantity).toLocaleString("en-US")}</p>
         </div>
       </div>
     </article>
   ));
+
 
   return (
     <>
       <div className={styles.overlay} onClick={props.toggleModal}></div>
       <section className={styles.cartModal}>
         <div className={styles.title}>
-          <h3>Cart</h3>
+          <h3>Cart <span className={styles.cartLength}>({props.cart.length})</span></h3>
           <span className="material-icons-outlined" onClick={props.toggleModal}>
             close
           </span>
