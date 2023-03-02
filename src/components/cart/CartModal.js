@@ -71,10 +71,16 @@ const CartModal = (props) => {
   return (
     <>
       <div
-        className={props.showCart ? styles.overlay : styles.hidden}
+        className={[styles.overlay, props.showCart && styles.showOverlay].join(
+          " "
+        )}
         onClick={props.toggleModal}
       ></div>
-      <section className={props.showCart ? styles.cartModal : styles.hidden}>
+      <section
+        className={[styles.cartModal, props.showCart && styles.showCart].join(
+          " "
+        )}
+      >
         <div className={styles.title}>
           <h3>
             Cart{" "}
