@@ -29,7 +29,11 @@ const ProductDetails = (props) => {
 
   return (
     <main className={styles.page}>
-      <img src={item.image} alt="" className={styles.img}></img>
+      <img
+        src={item.image}
+        alt={`${item.name}, ${item.category} furniture`}
+        className={styles.img}
+      ></img>
       <div className={styles.productDetails}>
         <h1 className={styles.productTitle}>{item.name}</h1>
         <p className={styles.productDescription}>

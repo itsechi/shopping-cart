@@ -9,6 +9,7 @@ const createPage = (productsArr, name) => {
       price={item.price}
       img={item.image}
       id={item.id}
+      category={item.category}
     />
   ));
 

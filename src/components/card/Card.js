@@ -12,7 +12,7 @@ const Card = (props) => {
           <img
             src={props.img}
             className={loaded ? styles.img : styles.hidden}
-            alt="#"
+            alt={`${props.name}, ${props.category} furniture`}
             onLoad={() => setLoaded(true)}
           ></img>
         </div>
