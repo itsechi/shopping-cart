@@ -47,10 +47,10 @@ const App = () => {
           showCart={showCart}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<Catalog />} />
+          <Route path="/shopping-cart" element={<Home />} />
+          <Route path="/shopping-cart/:id" element={<Catalog />} />
           <Route
-            path="/:id/:id"
+            path="/shopping-cart/:id/:id"
             element={
               <ProductDetails
                 removeFromCart={removeFromCart}
