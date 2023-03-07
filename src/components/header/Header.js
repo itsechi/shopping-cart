@@ -6,19 +6,19 @@ import CartModal from "../cart/CartModal";
 const Header = (props) => {
   return (
     <header className={styles.header}>
-      <Link to="./">
+      <Link to="./shopping-cart">
         <p className={styles.title}>FURNITURE</p>
       </Link>
       <nav className={styles.nav}>
         <ul className={styles.navUl}>
           <div className={styles.navLinks}>
-            <Link to="./living">
+            <Link to="./shopping-cart/living">
               <li>Living</li>
             </Link>
-            <Link to="./dining">
+            <Link to="./shopping-cart/dining">
               <li>Dining</li>
             </Link>
-            <Link to="./bedroom">
+            <Link to="./shopping-cart/bedroom">
               <li>Bedroom</li>
             </Link>
           </div>
