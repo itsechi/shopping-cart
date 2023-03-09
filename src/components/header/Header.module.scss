@@ -66,3 +66,33 @@ a {
     }
   }
 }
+
+.userPopout {
+  position: absolute;
+  background-color: $white;
+  right: 0;
+  padding: 1.5rem;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+
+  & button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: $dark-gray;
+    color: $white;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $black;
+    }
+  }
+
+  & span {
+    font-weight: 700;
+  }
+}

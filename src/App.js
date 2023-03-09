@@ -5,12 +5,40 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAFNCPAr5MAFssBm15RPHn6fr5OiVXp_hA",
+  authDomain: "shoppingcart-71f08.firebaseapp.com",
+  projectId: "shoppingcart-71f08",
+  storageBucket: "shoppingcart-71f08.appspot.com",
+  messagingSenderId: "91829384369",
+  appId: "1:91829384369:web:7ba70b4ecde6366cfb5e90",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 const App = () => {
   const [cart, setCart] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
+  const [user] = useAuthState(auth);
 
   const toggleModal = () => {
     setShowCart(!showCart);
+  };
+
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+
+  const signOutUser = () => {
+    signOut(auth);
+    window.location.reload();
   };
 
   const addToCart = (item, quantity) => {
@@ -45,6 +73,9 @@ const App = () => {
           removeFromCart={removeFromCart}
           toggleModal={toggleModal}
           showCart={showCart}
+          signInWithGoogle={signInWithGoogle}
+          signOut={signOutUser}
+          user={user}
         />
         <Routes>
           <Route path="/shopping-cart" element={<Home />} />

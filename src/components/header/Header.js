@@ -4,6 +4,20 @@ import styles from "./Header.module.scss";
 import CartModal from "../cart/CartModal";
 
 const Header = (props) => {
+  const [displayPopout, setDisplayPopout] = React.useState(false);
+  console.log(displayPopout);
+
+  const UserPopout = (props) => {
+    return (
+      <div className={styles.userPopout}>
+        <p>
+          Hello, <span>{props.displayName}!</span>
+        </p>
+        <button onClick={props.signOut}>Sign Out</button>
+      </div>
+    );
+  };
+
   return (
     <header className={styles.header}>
       <Link to="/shopping-cart">
@@ -27,7 +41,27 @@ const Header = (props) => {
               <span className="material-icons-outlined">search</span>
             </li>
             <li>
-              <span className="material-icons-outlined">favorite_border</span>
+              {props.user ? (
+                <img
+                  style={{ width: "24px", borderRadius: "50%" }}
+                  src={props.user.photoURL}
+                  onClick={() => setDisplayPopout(!displayPopout)}
+                  alt={`Google avatar of ${props.user.displayName}`}
+                ></img>
+              ) : (
+                <span
+                  className="material-icons-outlined"
+                  onClick={props.signInWithGoogle}
+                >
+                  account_circle
+                </span>
+              )}
+              {displayPopout && (
+                <UserPopout
+                  displayName={props.user.displayName}
+                  signOut={props.signOut}
+                />
+              )}
             </li>
             <li>
               <span
