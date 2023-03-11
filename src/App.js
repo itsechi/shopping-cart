@@ -13,11 +13,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  getFirestore,
-  doc,
-  setDoc
-} from "firebase/firestore";
+import { getFirestore, doc, setDoc, deleteDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFNCPAr5MAFssBm15RPHn6fr5OiVXp_hA",
@@ -79,11 +75,21 @@ const App = () => {
     saveCart(newCart);
   };
 
+  const removeCart = async () => {
+    try {
+      await deleteDoc(doc(db, "cart", auth.currentUser.uid));
+    } catch (error) {
+      console.error("Error deleting cart items from Firebase Database", error);
+    }
+  };
+
   const removeFromCart = (item) => {
     const product = cart.findIndex((product) => product.item.id === item.id);
     const newCart = [...cart];
     newCart.splice(product, 1);
     setCart(newCart);
+    console.log(cart.length);
+    if (cart.length === 1) removeCart();
   };
 
   return (
