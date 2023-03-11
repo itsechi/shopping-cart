@@ -6,9 +6,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, signOut } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  signOut,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  getFirestore,
+  doc,
+  setDoc
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFNCPAr5MAFssBm15RPHn6fr5OiVXp_hA",
@@ -21,11 +30,23 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const App = () => {
   const [cart, setCart] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
   const [user] = useAuthState(auth);
+
+  async function saveCart(cart) {
+    try {
+      await setDoc(doc(db, "cart", auth.currentUser.uid), {
+        uid: auth.currentUser.uid,
+        cart: cart,
+      });
+    } catch (error) {
+      console.error("Error saving cart items to Firebase Database", error);
+    }
+  }
 
   const toggleModal = () => {
     setShowCart(!showCart);
@@ -41,7 +62,7 @@ const App = () => {
     window.location.reload();
   };
 
-  const addToCart = (item, quantity) => {
+  const addToCart = async (item, quantity) => {
     const product = cart.find((product) => product.item.id === item.id);
     const newCart = [...cart];
     if (product)
@@ -55,6 +76,7 @@ const App = () => {
         quantity,
       });
     setCart(newCart);
+    saveCart(newCart);
   };
 
   const removeFromCart = (item) => {
