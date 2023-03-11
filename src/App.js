@@ -2,7 +2,7 @@ import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Catalog from "./pages/catalog/Catalog";
 import ProductDetails from "./pages/productDetails/ProductDetails";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 
 import { initializeApp } from "firebase/app";
@@ -125,10 +125,10 @@ const App = () => {
           user={user}
         />
         <Routes>
-          <Route path="/shopping-cart" element={<Home />} />
-          <Route path="/shopping-cart/:id" element={<Catalog />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Catalog />} />
           <Route
-            path="/shopping-cart/:id/:id"
+            path="/:id/:id"
             element={
               <ProductDetails
                 removeFromCart={removeFromCart}
