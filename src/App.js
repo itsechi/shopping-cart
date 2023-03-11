@@ -88,8 +88,7 @@ const App = () => {
     const newCart = [...cart];
     newCart.splice(product, 1);
     setCart(newCart);
-    console.log(cart.length);
-    if (cart.length === 1) removeCart();
+    if (newCart.length === 0) removeCart();
   };
 
   return (
