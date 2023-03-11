@@ -13,7 +13,13 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, doc, setDoc, deleteDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  deleteDoc,
+  getDoc,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFNCPAr5MAFssBm15RPHn6fr5OiVXp_hA",
@@ -32,6 +38,10 @@ const App = () => {
   const [cart, setCart] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
   const [user] = useAuthState(auth);
+
+  React.useEffect(() => {
+    user && loadCart();
+  }, [user]);
 
   async function saveCart(cart) {
     try {
@@ -56,6 +66,16 @@ const App = () => {
   const signOutUser = () => {
     signOut(auth);
     window.location.reload();
+  };
+
+  const loadCart = async () => {
+    const docRef = doc(db, "cart", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const newCart = docSnap.data().cart;
+      setCart(newCart);
+    }
   };
 
   const addToCart = async (item, quantity) => {
